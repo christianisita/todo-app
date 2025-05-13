@@ -1,7 +1,7 @@
 const Database = require('better-sqlite3');
 const path = require('path');
 
-const dbPath = path.resolve(__dirname, '../../todo.db');
+const dbPath = path.resolve(__dirname, '../../todos.db');
 
 const db = new Database(dbPath);
 console.log(dbPath);
@@ -23,7 +23,6 @@ function initializeDatabase(){
     console.log("Data initialized successfully")
 }
 
-module.exports = {
-    db,
-    initializeDatabase
-};
+initializeDatabase();
+
+module.exports = db;
