@@ -1,4 +1,5 @@
 const db = require('../configs/database');
+const { convertToBooleans } = require('../utils/transformerHelper');
 
 class TodoModel {
     // create
@@ -16,13 +17,15 @@ class TodoModel {
     // find by ID
     static findByID(id) {
         const stmt = db.prepare('SELECT * FROM todos WHERE id = ?');
-        return stmt.get(id);
+        const todo = stmt.get(id);
+        return convertToBooleans(todo, ['completed']);
     }
 
     // findAll
     static findAll() {
         const stmt = db.prepare('SELECT * FROM todos ORDER BY priority ASC');
-        return stmt.all();
+        const todos =  stmt.all();
+        return todos.map(todo => convertToBooleans(todo, ['completed']))
     }
 
     // update todo
