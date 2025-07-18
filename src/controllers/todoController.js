@@ -26,7 +26,7 @@ class TodoController {
                 success: true,
                 message: 'Success create todo',
                 statusCode: 201,
-                data: todo
+                data: [todo]
             });
         } catch (error) {
             sendResponse(res, {
@@ -70,7 +70,7 @@ class TodoController {
                 success: true,
                 message: "Success get todo",
                 statusCode: 200,
-                data: todo
+                data: [todo]
             })
         } catch (error) {
             sendResponse(res, {
@@ -101,7 +101,7 @@ class TodoController {
                 success: true,
                 message: "Success update todo",
                 statusCode: 200,
-                data: updatedTodo
+                data: [updatedTodo]
             })
         } catch (error) {
             sendResponse(res, {
@@ -129,7 +129,7 @@ class TodoController {
                 success: true,
                 message: "Successfully update todo status",
                 statusCode: 200,
-                data: toggledTodo
+                data: [toggledTodo]
             })
         } catch (error) {
             sendResponse(res, {
